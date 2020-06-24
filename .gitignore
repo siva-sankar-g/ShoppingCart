@@ -41,6 +41,9 @@ yarn-error.log
 testem.log
 package-lock.json
 /typings
+404.html
+.firebaserc
+.firebase.json
 
 # System Files
 .DS_Store
