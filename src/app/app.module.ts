@@ -21,6 +21,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { LoginComponent } from './login/login.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { AuthGuardService } from './auth-guard.service';
 
 
 @NgModule({
@@ -47,12 +48,14 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       {path : '', component : HomeComponent},
       {path : 'products', component : ProductsComponent},
       {path : 'shoppingcart', component : ShoppingCartComponent},
-      {path : 'checkout', component : CheckoutComponent},
-      {path : 'ordersuccess', component : OrderSuccessComponent},
-      {path : 'my/orders', component : MyOrdersComponent},
       {path : 'login', component : LoginComponent},
-      {path : 'admin/adminproducts', component : AdminProductsComponent},
-      {path : 'admin/adminorders', component : AdminOrdersComponent},
+
+      {path : 'checkout', component : CheckoutComponent, canActivate : [ AuthGuardService ]},
+      {path : 'ordersuccess', component : OrderSuccessComponent, canActivate : [ AuthGuardService ]},
+      {path : 'my/orders', component : MyOrdersComponent, canActivate : [ AuthGuardService ]},
+      
+      {path : 'admin/adminproducts', component : AdminProductsComponent, canActivate : [ AuthGuardService ]},
+      {path : 'admin/adminorders', component : AdminOrdersComponent, canActivate : [ AuthGuardService ]},
     ])
   ],
   providers: [],
