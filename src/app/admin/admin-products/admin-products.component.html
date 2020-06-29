@@ -1,1 +1,33 @@
-<p>admin-products works!</p>
+<p>
+  <a routerLink="/admin/adminproducts/new" class="btn btn-primary"
+    >New Product</a
+  >
+</p>
+
+<input
+  type="text"
+  class="form-control"
+  placeholder="Search.."
+  (keyup)="filter(f.value)"
+  ngModel
+  #f="ngModel"
+/>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of productList | keyvalue">
+      <td>{{ p.value[1].title  }}</td>
+      <td>{{ p.value[1].price | currency: "INR":"symbol" }}</td>
+      <td>
+        <a [routerLink]="['/admin/adminproducts/', p.value[0]]">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

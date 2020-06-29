@@ -10,7 +10,11 @@ import { AuthService } from '../auth.service';
 })
 export class BsNavbarComponent  {
 
-  constructor(public auth : AuthService ) { }
+  appUser : any;
+
+  constructor(public auth : AuthService ) { 
+    auth.appUser$.subscribe( appuser => this.appUser = appuser )
+  }
 
   logout() {
     this.auth.logout()
