@@ -1,0 +1,12 @@
+.imageSize {
+    width: 400px;
+    height: 200px;
+}
+
+.cardWidth {
+    width: 22rem;
+}
+
+.card-footer {
+    padding: 0;
+}

@@ -23,6 +23,9 @@ import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.componen
 import { AuthGuardService } from "./auth-guard.service";
 import { AdminAuthGuardService } from "./admin-auth-guard.service";
 import { ProductFormComponent } from "./product-form/product-form.component";
+import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { CartItemsAddComponent } from './cart-items-add/cart-items-add.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { ProductFormComponent } from "./product-form/product-form.component";
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent,
+    CartItemsAddComponent,
   ],
   imports: [
     BrowserModule,

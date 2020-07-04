@@ -1,0 +1,27 @@
+<div class="card mb-5 ml-5 pt-3 shadow" [class.cardWidth]="cardwidth">
+  <img
+    class="card-img-top imageSize mx-auto"
+    [src]="product.imageUrl"
+    alt="Card image cap"
+    *ngIf="product.imageUrl"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">
+      {{ product.price | currency: "INR":"symbol" }}
+    </p>
+  </div>
+  <div class="card-footer" *ngIf="showAction">
+    <button
+      *ngIf="getquantity() == 0; else showbelow"
+      class="btn btn-secondary btn-block py-2"
+      (click)="addToCart(product)"
+    >
+      Add to Cart
+    </button>
+    <ng-template #showbelow>
+      <cart-items-add [product]="product" [quantity]="productQuantity"></cart-items-add>
+    </ng-template>
+  </div>
+</div>
+

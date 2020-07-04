@@ -1,1 +1,58 @@
-<p>shopping-cart works!</p>
+<h1>ShoppingCart</h1>
+<ng-container *ngIf="cart$ | async as cart">
+  <span>You have {{ cart.totalcount }} items in your shoppingcart</span>
+  <button class="btn btn-light ml-3" (click)="clearTotalCart()" *ngIf="cart.totalcount > 0">
+    Clear Cart
+  </button>
+  <table class="table my-3">
+    <thead>
+      <tr class="text-center">
+        <th>Product</th>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let cart of cart.items | keyvalue">
+        <tr class="text-center">
+          <td>
+            <img
+              [src]="cart.value.product.imageUrl"
+              alt="image"
+              class="imageSize rounded-circle"
+            />
+          </td>
+          <td class="tdCell">
+            {{ cart.value.product.title }}
+          </td>
+          <td class="tdCell">
+            <cart-items-add
+              [product]="cart.value.product"
+              [quantity]="cart.value.quantity"
+            ></cart-items-add>
+          </td>
+          <td class="tdCell">
+            {{ cart.value.quantity }} {{ "x" }} {{ cart.value.product.price }}
+            {{ "=" }}
+            {{
+              cart.value.product.price * cart.value.quantity
+                | currency: "INR":"symbol"
+            }}
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" class="footer">
+          {{ "Grand Total :" }}
+          {{ cart.totalprice | currency: "INR":"symbol" }}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <a class="btn btn-success"  *ngIf="cart.totalcount > 0" routerLink="/checkout">
+    Checkout
+  </a>
+</ng-container>

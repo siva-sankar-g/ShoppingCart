@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs';
-import { KeyValuePipe } from '@angular/common';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,8 @@ export class ProductService {
     return this.db.object('/products').valueChanges();
   }
   getAllList() {
-    return this.db.list('/products').valueChanges()
+  let list =  this.db.list('/products');
+  return list.valueChanges();
   }
  
   get(productId) {
