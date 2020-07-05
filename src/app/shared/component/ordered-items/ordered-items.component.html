@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <h2 class="text-success">Order Information</h2>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>OrderedDate</th>
+        <th>OrderDetails</th>
+      </tr>
+    </thead>
+    <ng-container *ngIf="orderDetails$ | async as orders">
+      <tbody>
+        <tr *ngFor="let order of orders | keyvalue">
+          <td>
+            {{ order.value.shipping.name | titlecase }}
+          </td>
+          <td>
+            {{ order.value.orderdate | date: "medium" }}
+          </td>
+          <td>
+            <a [routerLink]="['/order/details/', order.key]">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </ng-container>
+  </table>
+</div>
