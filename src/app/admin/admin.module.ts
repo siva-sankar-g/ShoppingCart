@@ -22,31 +22,30 @@ import { ProductFormComponent } from './component/product-form/product-form.comp
     SharedModule,
     RouterModule.forChild([
       {
-        path: "admin/adminproducts/new",
+        path: "adminproducts/new",
         component: ProductFormComponent,
         canActivate: [AuthGuardService, AdminAuthGuardService],
       },
 
       {
-        path: "admin/adminproducts/:id",
+        path: "adminproducts/:id",
         component: ProductFormComponent,
         canActivate: [AuthGuardService, AdminAuthGuardService],
       },
 
       {
-        path: "admin/adminproducts",
+        path: "adminproducts",
         component: AdminProductsComponent,
         canActivate: [AuthGuardService, AdminAuthGuardService],
       },
 
       {
-        path: "admin/adminorders",
+        path: "adminorders",
         component: AdminOrdersComponent,
         canActivate: [AuthGuardService, AdminAuthGuardService],
       },
     ]),
   ],
-
 
   exports: [
     AdminOrdersComponent,
